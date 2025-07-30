@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Cinzel', serif;
-  background: url('images/stranger-bg.jpg') no-repeat center center fixed;
+  background: url('stranger-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #ffffff;
   position: relative;

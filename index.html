@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upside Down Protocol</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <audio id="bgMusic" loop autoplay muted>
+    <source src="audio/bg_music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="container" id="landing">
+    <h1 class="glitch">THE FEEDBACK MACHINE</h1>
+    <p class="subtext">Initiate Upside Down Protocol</p>
+    <button type="button" class="start-btn" onclick="startProtocol()">ENTER THE RIFT</button>
+    <button type="button" id="toggleMusicBtn" class="mute-btn" onclick="toggleMusic()">🔇 Music Off</button>
+  </div>
+
+  <div class="form-container" id="formContainer" style="display: none;">
+    <form name="feedback-form" onsubmit="submitForm(event)">
+      <!-- Step 1 -->
+      <div class="form-step active" id="step-1">
+        <p class="npc">[Agent Log 1] Identify yourself before proceeding.</p>
+        <input type="text" name="name" placeholder="Full Name" class="narrow-input" required />
+        <input type="text" name="class" placeholder="Course" class="narrow-input" required />
+        <input type="text" name="branch" placeholder="Branch" class="narrow-input" required />
+        <input type="text" name="roll" placeholder="Roll No." class="narrow-input" required />
+        <input type="text" name="phone" placeholder="Phone Number" class="narrow-input" required />
+        <input type="email" name="email" placeholder="Email" class="narrow-input" required />
+        <br>
+        <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-step" id="step-2">
+        <p class="npc">[Agent Log 2] Assess the breach condition.</p>
+        <label>3. Did the session clarify your doubts about your course?</label><br>
+        <label><input type="radio" name="q3" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="q3" value="Somewhat" /> Somewhat</label>
+        <label><input type="radio" name="q3" value="No" /> No</label><br><br>
+
+        <label>4. Were the debate and quiz rounds engaging?</label><br>
+        <label><input type="radio" name="q4" value="Yes" required /> Yes</label>
+        <label><input type="radio" name="q4" value="No" /> No</label>
+        <label><input type="radio" name="q4" value="Didn't Attend" /> Didn't Attend</label><br><br>
+
+        <label>5. Which domain interests you the most?</label><br>
+        <label><input type="checkbox" name="domains" value="App Development" /> App Development</label><br>
+        <label><input type="checkbox" name="domains" value="Web Development" /> Web Development</label><br>
+        <label><input type="checkbox" name="domains" value="Machine Learning / AI" /> Machine Learning / AI</label><br>
+        <label><input type="checkbox" name="domains" value="Cyber Security" /> Cyber Security</label><br>
+        <label><input type="checkbox" name="domains" value="Blockchain" /> Blockchain</label><br>
+        <label><input type="checkbox" name="domains" value="Competitive Programming" /> Competitive
+          Programming</label><br>
+        <label><input type="checkbox" name="domains" value="Not Sure Yet" /> Not Sure Yet</label><br><br>
+
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="form-step" id="step-3">
+        <p class="npc">[Final Log] Complete your mission report.</p>
+
+        <label>6. Do you have any questions regarding your course or career path?</label><br>
+        <textarea name="q6" rows="3" class="narrow-input"></textarea><br><br>
+
+        <label>7. What would you suggest to improve future orientation programs?</label><br>
+        <textarea name="q7" rows="3" class="narrow-input"></textarea><br><br>
+
+        <label>8. Which part of the orientation did you enjoy most?</label><br>
+        <textarea name="q8" rows="2" class="narrow-input"></textarea><br><br>
+
+        <label>9. Would you join future ACM events or workshops?</label><br>
+        <label><input type="radio" name="q9" value="Yes" /> Yes</label>
+        <label><input type="radio" name="q9" value="Maybe" /> Maybe</label>
+        <label><input type="radio" name="q9" value="Not at the moment" /> Not at the moment</label><br><br>
+
+
+        <label>10. Are you interested in volunteering or joining an ACM sub-team?</label><br>
+        <label><input type="radio" name="q10" value="Yes" /> Yes</label>
+        <label><input type="radio" name="q10" value="No" /> No</label>
+        <label><input type="radio" name="q10" value="I'd like to learn more first" /> I'd like to learn more
+          first</label><br><br>
+
+
+        <label>11. If you had to rename today’s session, what would you call it?</label><br>
+        <textarea name="q11" rows="2" class="narrow-input"></textarea><br><br>
+
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" class="next-btn" onclick="submitForm(event)">Complete Protocol</button>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="form-step" id="step-4">
+        <p class="npc glitch">🧠 Protocol Complete</p>
+        <p class="subtext">The Upside Down has been sealed. Thank you, Agent.</p>
+        <a href="index.html" class="start-btn">Return to Base</a>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

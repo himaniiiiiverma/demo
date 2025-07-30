@@ -56,38 +56,28 @@ function toggleMusic() {
 function submitForm(event) {
   event.preventDefault();
 
-  // Validate required radio groups manually
-  const requiredRadioNames = ["q3", "q4"];
-  for (const name of requiredRadioNames) {
-    const radios = document.getElementsByName(name);
-    if (![...radios].some(r => r.checked)) {
-      alert(`Please answer question: ${name}`);
-      return;
-    }
-  }
-
+  const form = document.forms['feedback-form'];
   const formData = new FormData(form);
 
-  // Get selected domains (checkboxes)
+  // Get all checked domains
   const domainCheckboxes = document.querySelectorAll('input[name="domains"]:checked');
   const selectedDomains = Array.from(domainCheckboxes).map(cb => cb.value).join(', ');
-  formData.set("domains", selectedDomains);
+  formData.append("domains", selectedDomains);
 
   fetch(scriptURL, {
     method: 'POST',
     body: formData
   })
-    .then(() => {
-      console.log("✅ Data sent to Google Sheet!");
-      currentStep++;
-      showStep(currentStep);
-      form.reset();
-      toggleBtn.innerText = "🔇 Music Off";
-      bgMusic.pause();
-      bgMusic.muted = true;
-    })
-    .catch(error => {
-      console.error('❌ Submission failed:', error.message);
-      alert("Something went wrong. Please try again.");
-    });
+  .then(() => {
+    console.log("✅ Data sent to Google Sheet!");
+    currentStep++; // move to thank-you screen
+    showStep(currentStep);
+    
+    // 🔁 Do NOT redirect or reset
+    // form.reset(); // <-- removed on your request
+  })
+  .catch(error => {
+    console.error('❌ Submission failed:', error.message);
+    alert("Something went wrong. Please try again.");
+  });
 }

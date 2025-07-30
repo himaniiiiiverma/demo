@@ -77,7 +77,7 @@ function submitForm(event) {
     // form.reset(); // <-- removed on your request
   })
   .catch(error => {
-    console.error('❌ Submission failed:', error.message);
+    console.error('❌ Submission failed:', error);
     alert("Something went wrong. Please try again.");
   });
 }
